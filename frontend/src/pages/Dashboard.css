@@ -28,12 +28,197 @@
   gap: 1rem;
 }
 
-.header-left h1 {
-  font-size: 1.5rem;
+.desktop-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.dash-nav-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.dash-nav-logo-text {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.mobile-brand-title {
+  display: none;
+  font-size: 1.125rem;
   font-weight: 800;
   color: var(--accent-green);
   margin: 0;
   cursor: pointer;
+}
+
+.desktop-profile-wrapper {
+  position: relative;
+}
+
+.desktop-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem 0.3rem 0.3rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.desktop-profile-btn:hover {
+  border-color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.desktop-profile-btn .user-avatar {
+  width: 34px;
+  height: 34px;
+  font-size: 1rem;
+}
+
+.chevron-icon {
+  width: 14px;
+  height: 14px;
+  stroke: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.desktop-profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.625rem);
+  min-width: 240px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  padding: 0.625rem;
+  z-index: 200;
+  animation: dropdownFade 0.15s ease;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.dropdown-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-green), var(--accent-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.dropdown-user-details {
+  min-width: 0;
+}
+
+.dropdown-name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-email {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: 0.125rem 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 0.375rem 0;
+}
+
+.dropdown-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.dropdown-nav-item svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  stroke: var(--text-secondary);
+  transition: stroke 0.2s ease;
+}
+
+.dropdown-nav-item:hover {
+  background: rgba(16, 185, 129, 0.08);
+  color: var(--accent-green);
+}
+
+.dropdown-nav-item:hover svg {
+  stroke: var(--accent-green);
+}
+
+.dropdown-nav-item.danger {
+  color: var(--accent-red);
+}
+
+.dropdown-nav-item.danger svg {
+  stroke: var(--accent-red);
+}
+
+.dropdown-nav-item.danger:hover {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--accent-red);
+}
+
+.dropdown-badge {
+  margin-left: auto;
+  background: var(--accent-red);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  min-width: 18px;
+  text-align: center;
 }
 
 .header-right {
@@ -793,8 +978,12 @@
     display: flex;
   }
 
-  .header-left h1 {
-    font-size: 1.125rem;
+  .mobile-brand-title {
+    display: block;
+  }
+
+  .dashboard-header .desktop-nav-brand {
+    display: none;
   }
 
   .user-avatar {
@@ -850,7 +1039,7 @@
     gap: 0.5rem;
   }
 
-  .header-left h1 {
+  .mobile-brand-title {
     font-size: 1rem;
   }
 

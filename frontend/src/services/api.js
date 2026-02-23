@@ -64,6 +64,14 @@ export const authAPI = {
     } catch (error) {
       throw error.response?.data || { success: false, message: 'Network error' };
     }
+  },
+  deleteAccount: async () => {
+    try {
+      const response = await createAuthAxios().delete('/auth/account');
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || { success: false, message: 'Network error' };
+    }
   }
 };
 
