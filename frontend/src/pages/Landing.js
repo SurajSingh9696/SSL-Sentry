@@ -86,7 +86,8 @@ const Landing = () => {
     <div className="landing-container">
       <div className="landing-nav">
         <div className="nav-left">
-          <img src="/logo.png" alt="SSL Sentry" className="nav-logo" />
+          <img src="/logo.png" alt="SSL Sentry" className="nav-logo-img" />
+          <span className="nav-logo-text">SSL Sentry</span>
         </div>
         <div className="nav-right">
           <ThemeToggle />
