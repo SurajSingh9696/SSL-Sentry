@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { analyzeWebsite } from '../services/api';
@@ -16,16 +16,7 @@ const Analyzer = () => {
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (location.state?.url) {
-      const analyzeInitialUrl = async () => {
-        await handleAnalyze(location.state.url);
-      };
-      analyzeInitialUrl();
-    }
-  }, [location.state]);
-
-  const handleAnalyze = async (targetUrl = url) => {
+  const handleAnalyze = useCallback(async (targetUrl = url) => {
     if (!targetUrl.trim()) {
       setError('Please enter a valid URL');
       return;
@@ -47,7 +38,16 @@ const Analyzer = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [url]);
+
+  useEffect(() => {
+    if (location.state?.url) {
+      const analyzeInitialUrl = async () => {
+        await handleAnalyze(location.state.url);
+      };
+      analyzeInitialUrl();
+    }
+  }, [location.state, handleAnalyze]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
